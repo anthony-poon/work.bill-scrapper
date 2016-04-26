@@ -6,6 +6,9 @@
 package net.anthonypoon.bill_scrapper;
 
 import java.lang.reflect.Field;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -34,6 +37,12 @@ public class RoamingDetailData {
     
     public String getDateTimeString() {
         return dateTimeString;
+    }
+    
+    public String getDateTimeAsSqlString() throws ParseException {
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yy HH:mm");
+        DateFormat outputformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return outputformat.format(formatter.parse(dateTimeString));
     }
 
     public String getLocation() {

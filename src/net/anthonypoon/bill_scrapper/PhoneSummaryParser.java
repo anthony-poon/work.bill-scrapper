@@ -19,7 +19,7 @@ import java.util.regex.Pattern;
 public class PhoneSummaryParser implements BillParser{
     private List<String> textCache = new ArrayList();
     private PhoneSummaryData returnData = new PhoneSummaryData();
-    
+
     @Override
     public void feedText(String str) {
         textCache.add(str);
@@ -32,5 +32,9 @@ public class PhoneSummaryParser implements BillParser{
     
     public void dump() {
         returnData.dump();
+    }
+    
+    public PhoneSummaryData getData() {
+        return returnData;
     }
 }

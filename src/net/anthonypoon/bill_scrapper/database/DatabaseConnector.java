@@ -11,8 +11,9 @@ import java.util.Properties;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import javafx.scene.shape.Shape;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  *
@@ -21,8 +22,10 @@ import javafx.scene.shape.Shape;
 public class DatabaseConnector {
     private Properties config = new Properties();
     private InputStream input;
-
-    public DatabaseConnector() throws IOException {
+    private Connection connection = null;
+    private String url;
+    
+    public DatabaseConnector() throws IOException, SQLException {
         Path distConfigPath = Paths.get("resource/config/config.dist.properties");
         Path configPath = Paths.get("resource/config/config.properties");
         if (!Files.exists(configPath)) {
@@ -30,7 +33,11 @@ public class DatabaseConnector {
         }
         input = Files.newInputStream(configPath);
         config.load(input);
-        System.out.println(config.getProperty("testing"));
+        url = "jdbc:mysql://"+config.getProperty("host")+":"+config.getProperty("port")+"/"+config.getProperty("database")+"?user="+config.getProperty("username")+"&password="+config.getProperty("password");
+        connection = DriverManager.getConnection(url);
     }
     
+    public Connection getConnection() {
+        return connection;
+    }
 }

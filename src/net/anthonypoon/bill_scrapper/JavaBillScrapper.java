@@ -7,9 +7,13 @@ package net.anthonypoon.bill_scrapper;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 import net.anthonypoon.bill_scrapper.database.DatabaseConnector;
+import net.anthonypoon.bill_scrapper.database.DbWriter;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 /**
@@ -22,30 +26,41 @@ public class JavaBillScrapper {
         PHONE_SUMMARY,
         PHONE_DETAIL,
     }
+    
+    private static BillSummaryData billSummary;
+    private static PhoneSummaryData phoneSummary;
+    private static Map<String, PhoneDetailData> phoneDetail = new HashMap();
+    private static List<String> filePaths = new ArrayList<>();
     public static void main(String[] args) {
         // TODO code application logic here
         try {
-        List<String> argsArray = new ArrayList(Arrays.asList(args));
-            if (argsArray.contains("-t")) {
-                DatabaseConnector db = new DatabaseConnector();
-            } else {
-
-                    String filePath = args[args.length - 1];
-                    System.out.println("Loading: " + filePath);
-                    PDDocument doc = PDDocument.load(new File(filePath));
-                    PDFTextStripper stripper = new PDFTextStripper();
-                    String rawText = stripper.getText(doc);
-                    String[] textArray = rawText.split("[\\r\\n]+");
-
-                    divideSection(textArray);
-
+            for (String arg : args) {
+                if (!arg.startsWith("-")){
+                    filePaths.add(arg);
+                }
             }
+            Collections.sort(filePaths);
+            for (String filePath : filePaths) {
+                System.out.println("Loading: " + filePath);
+                PDDocument doc = PDDocument.load(new File(filePath));
+                PDFTextStripper stripper = new PDFTextStripper();
+                String rawText = stripper.getText(doc);
+                String[] textArray = rawText.split("[\\r\\n]+");
+                parsePdf(textArray);
+                DatabaseConnector db = new DatabaseConnector();
+                DbWriter writer = new DbWriter(db.getConnection());
+                writer.insertBillSummary(billSummary);
+                writer.insertPhoneSummary(phoneSummary);
+                writer.insertPhoneDetail(phoneDetail);
+                doc.close();
+            }
+            
         } catch (Exception ex) {
             ex.printStackTrace(System.out);
         }
     }
     
-    private static void divideSection (String[] tArray) {
+    private static void parsePdf (String[] tArray) {
         BillSummaryParser billSummaryParser = new BillSummaryParser();
         PhoneSummaryParser phoneSummaryParser = new PhoneSummaryParser();
         PhoneDetailParser phoneDetailParser = new PhoneDetailParser();
@@ -59,8 +74,11 @@ public class JavaBillScrapper {
                 currentParser = phoneDetailParser;
             }
         }
-        billSummaryParser.dump();
-        phoneSummaryParser.dump();
-        phoneDetailParser.dump();
+        billSummary = billSummaryParser.getData();
+        phoneSummary = phoneSummaryParser.getData();
+        phoneDetail = phoneDetailParser.getData();
+        //billSummaryParser.dump();
+        //phoneSummaryParser.dump();
+        //phoneDetailParser.dump();
     }
 }

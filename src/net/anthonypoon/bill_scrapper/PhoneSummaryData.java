@@ -12,15 +12,19 @@ import java.util.Map;
  *
  * @author anthony.poon
  */
-public class PhoneSummaryData {
-    private Map<String, Float> db = new HashMap();
+public class PhoneSummaryData{
+    private Map<String, Float> returnData = new HashMap();
     public void addEntry(String phoneNumber, String fee) {
-        db.put(phoneNumber, Float.parseFloat(fee));
+        returnData.put(phoneNumber, Float.parseFloat(fee));
     }
     
     public void dump() {
-        for (Map.Entry<String, Float> entry : db.entrySet()) {
+        for (Map.Entry<String, Float> entry : returnData.entrySet()) {
             System.out.println(entry.getKey() + " -> " + entry.getValue());
         }
+    }
+    
+    public Map<String, Float> getData() {
+        return returnData;
     }
 }

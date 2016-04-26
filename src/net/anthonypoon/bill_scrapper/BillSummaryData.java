@@ -6,21 +6,25 @@
 package net.anthonypoon.bill_scrapper;
 
 import java.lang.reflect.Field;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
  * @author anthony.poon
  */
-public class BillSummaryData {
-    private String BillingDate;
-    private String AccNumber;
+public class BillSummaryData{
+    private String billingDate;
+    private String accNumber;
     private float previousBalance;
     private float serviceFee;
     private float localCallFee;
     private float iddFee;
     private float roamingVoiceFee;
     private float roamingDataFee;
-    private float volumnDiscount;
+    private float volumeDiscount;
     private float vas;
     private float currentAmount;
     
@@ -42,19 +46,24 @@ public class BillSummaryData {
     
 
     public String getBillingDate() {
-        return BillingDate;
+        return billingDate;
+    }
+    
+    public Date getBillingDateAsObj() throws ParseException {
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yy");
+        return formatter.parse(billingDate);
     }
 
     public void setBillingDate(String BillingDate) {
-        this.BillingDate = BillingDate;
+        this.billingDate = BillingDate;
     }
 
     public String getAccNumber() {
-        return AccNumber;
+        return accNumber;
     }
 
     public void setAccNumber(String AccNumber) {
-        this.AccNumber = AccNumber;
+        this.accNumber = AccNumber;
     }
 
     public float getServiceFee() {
@@ -98,11 +107,11 @@ public class BillSummaryData {
     }
 
     public float getVolumnDiscount() {
-        return volumnDiscount;
+        return volumeDiscount;
     }
 
     public void setVolumnDiscount(String volumnDiscount) {
-        this.volumnDiscount = Float.parseFloat(volumnDiscount);
+        this.volumeDiscount = Float.parseFloat(volumnDiscount);
     }
 
     public float getVas() {

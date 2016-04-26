@@ -10,5 +10,6 @@ package net.anthonypoon.bill_scrapper;
  * @author anthony.poon
  */
 public interface BillParser {
+    PhoneSummaryData returnData = new PhoneSummaryData();
     public void feedText(String str);
 }

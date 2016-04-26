@@ -15,7 +15,7 @@ import java.util.Map;
  *
  * @author anthony.poon
  */
-public class PhoneDetailData {
+public class PhoneDetailData{
     private String phoneNumber;
     private Integer daypassCount = 0;
     private Float regexSum;
@@ -24,65 +24,65 @@ public class PhoneDetailData {
     private Map<String, Float> miscCharge = new HashMap();
     private List<IddDetailData> iddDetail = new ArrayList();
     private List<RoamingDetailData> roamingDetail = new ArrayList();
-    PhoneDetailData(String phoneNumber) {
+    public PhoneDetailData(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
     
-    String getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
     
-    Float getFixedMonthly() {
-        return chargedItem.get("fixed_monthly") != null ? chargedItem.get("fixed_monthly") : 0.0f;
+    public Float getFixedMonthly() {
+        return chargedItem.get("fixed_monthly_fee") != null ? chargedItem.get("fixed_monthly_fee") : 0.0f;
     }
     
     void setFixedMonthlyFee(String str) {
-        chargedItem.put("fixed_monthly", Float.parseFloat(str));
+        chargedItem.put("fixed_monthly_fee", Float.parseFloat(str));
     }
 
     void setIddFee(String str) {
-        chargedItem.put("idd", Float.parseFloat(str));
+        chargedItem.put("idd_fee", Float.parseFloat(str));
     }
     
-    Float getIddFee(String str) {
-        return chargedItem.get("idd") != null ? chargedItem.get("idd") : 0.0f;
+    public Float getIddFee() {
+        return chargedItem.get("idd_fee") != null ? chargedItem.get("idd_fee") : 0.0f;
     }    
 
     void setRoamingVoiceFee(String str) {
-        chargedItem.put("roaming_voice", Float.parseFloat(str));
+        chargedItem.put("roaming_voice_fee", Float.parseFloat(str));
     }
 
-    Float getRoamingVoiceFee() {
-        return chargedItem.get("roaming_voice") != null ? chargedItem.get("roaming_voice") : 0.0f;
+    public Float getRoamingVoiceFee() {
+        return chargedItem.get("roaming_voice_fee") != null ? chargedItem.get("roaming_voice_fee") : 0.0f;
     }
     
     void setRoamingDataFee(String str) {
-        chargedItem.put("roaming_data", Float.parseFloat(str));
+        chargedItem.put("roaming_data_fee", Float.parseFloat(str));
     }
 
-    Float getRoamingDataFee() {
-        return chargedItem.get("roaming_data") != null ? chargedItem.get("roaming_data") : 0.0f;
+    public Float getRoamingDataFee() {
+        return chargedItem.get("roaming_data_fee") != null ? chargedItem.get("roaming_data_fee") : 0.0f;
     }
 
 
     void setDayPass(String daypassCount, String daypassFee) {
         this.daypassCount = Integer.parseInt(daypassCount);
-        chargedItem.put("daypass", Float.parseFloat(daypassFee));
+        chargedItem.put("daypass_fee", Float.parseFloat(daypassFee));
     }
     
-    Integer getDayPassCount() {
+    public Integer getDayPassCount() {
         return this.daypassCount;
     }
     
-    Float getDayPassFee() {
-        return chargedItem.get("daypass") != null ? chargedItem.get("daypass") : 0.0f;
+    public Float getDayPassFee() {
+        return chargedItem.get("daypass_fee") != null ? chargedItem.get("daypass_fee") : 0.0f;
     }
 
     void setIddRoamingDiscount(String str) {
         chargedItem.put("idd_roaming_discount", -Float.parseFloat(str));
     }
 
-    Float getIddRoamingDiscount() {
+    public Float getIddRoamingDiscount() {
         return chargedItem.get("idd_roaming_discount") != null ? chargedItem.get("idd_roaming_discount") : 0.0f;
     }
     
@@ -92,6 +92,14 @@ public class PhoneDetailData {
     
     void setIddRegexSum(String str) {
         iddRegexSum = Float.parseFloat(str);
+    }
+    
+    public Float getRegexSum() {
+        return regexSum;
+    }
+    
+    public Float getIddRegexSum() {
+        return iddRegexSum != null ? iddRegexSum : 0.0f;
     }
   
     void addMiscCharge(String itemName, String amount) {
@@ -104,6 +112,14 @@ public class PhoneDetailData {
     
     public void addRoamingDetail(RoamingDetailData dataObj) {
         roamingDetail.add(dataObj);
+    }
+    
+    public List getIddDetail() {
+        return iddDetail;
+    }
+    
+    public List getRoamingDetail() {
+        return roamingDetail;
     }
     
     public void dump() {

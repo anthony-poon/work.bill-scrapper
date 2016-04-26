@@ -48,7 +48,7 @@ public class BillSummaryParser implements BillParser {
         patternMap.put(MatchType.ROAMING_DATA_FEE, Pattern.compile("(?i)^global roaming charges - data ([\\d\\.]+)"));
         patternMap.put(MatchType.TOTAL_VOLUME_DISCOUNT, Pattern.compile("(?i)^total volume discount ([\\d\\.]+)"));
         patternMap.put(MatchType.VAS, Pattern.compile("(?i)^value added services ([\\d\\.]+)"));
-        patternMap.put(MatchType.CURRENT_AMOUNT, Pattern.compile("(?i)^current amount ([\\d\\.]+)"));
+        patternMap.put(MatchType.CURRENT_AMOUNT, Pattern.compile("(?i)^current amount \\$([\\d\\.]+)"));
         Iterator it = patternMap.entrySet().iterator();
         boolean hasMatch = false;
         while(it.hasNext() && !(hasMatch)) {
@@ -89,6 +89,9 @@ public class BillSummaryParser implements BillParser {
                     case VAS:
                         returnData.setVas(regex.group(1));
                         break;
+                    case CURRENT_AMOUNT:
+                        returnData.setCurrentAmount(regex.group(1));
+                        break;
                 }
             }
         }
@@ -96,5 +99,9 @@ public class BillSummaryParser implements BillParser {
     
     public void dump() {
         returnData.dump();
+    }
+
+    public BillSummaryData getData() {
+        return returnData;
     }
 }

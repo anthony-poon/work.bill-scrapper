@@ -57,7 +57,7 @@ public class PhoneDetailParser implements BillParser{
         patternMap.put(MatchType.IDD_DETAIL_SECTION_START_FLAG, Pattern.compile("(?i)^idd/infoline calls details"));
         patternMap.put(MatchType.ROAMING_DETAIL_SECTION_START_FLAG, Pattern.compile("(?i)^global roaming charges details$"));
         patternMap.put(MatchType.PHONE_NUMBER, Pattern.compile("(?i)^mobile no\\.\\s+:\\s+(\\d+)"));
-        currentChargePatternMap.put(MatchType.FIXED_MONTHLY, Pattern.compile("(?i)^advance service charge [\\d/-]+ ([\\d\\.]+)"));
+        currentChargePatternMap.put(MatchType.FIXED_MONTHLY, Pattern.compile("(?i)^advance service charge[\\s\\w\\(\\)]* [\\d/-]+ ([\\d\\.]+)"));
         currentChargePatternMap.put(MatchType.IDD_FEE, Pattern.compile("(?i)^idd/infoline calls ([\\d\\.]+)"));
         currentChargePatternMap.put(MatchType.ROAMING_VOICE_FEE, Pattern.compile("(?i)^global roaming charges - voice ([\\d\\.]+)"));
         currentChargePatternMap.put(MatchType.ROAMING_DATA_FEE, Pattern.compile("(?i)^global roaming charges - data ([\\d\\.]+)"));
@@ -248,5 +248,9 @@ public class PhoneDetailParser implements BillParser{
         for (Map.Entry<String, PhoneDetailData> pair : returnData.entrySet()) {
             pair.getValue().dump();
         }
+    }
+    
+    public Map getData() {
+        return returnData;
     }
 }
