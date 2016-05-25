@@ -4,20 +4,25 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file://192.168.0.226/home/coding-project/java-bill-scrapper/src/net/anthonypoon/billscrapper/gui/controller/BrowsePDFController.java</file>
-            <file>file://192.168.0.226/home/coding-project/java-bill-scrapper/src/net/anthonypoon/billscrapper/gui/MainApp.java</file>
-            <file>file://192.168.0.226/home/coding-project/java-bill-scrapper/src/net/anthonypoon/billscrapper/gui/controller/ControllerListener.java</file>
-            <file>file://192.168.0.226/home/coding-project/java-bill-scrapper/src/net/anthonypoon/billscrapper/gui/Main.fxml</file>
-            <file>file://192.168.0.226/home/coding-project/java-bill-scrapper/src/net/anthonypoon/billscrapper/gui/controller/ViewRecordController.java</file>
-            <file>file://192.168.0.226/home/coding-project/java-bill-scrapper/src/net/anthonypoon/billscrapper/database/DbWriter.java</file>
-            <file>file://192.168.0.226/home/coding-project/java-bill-scrapper/src/net/anthonypoon/billscrapper/JavaBillScrapper.java</file>
-            <file>file://192.168.0.226/home/coding-project/java-bill-scrapper/src/net/anthonypoon/billscrapper/gui/main.css</file>
-            <file>file://192.168.0.226/home/coding-project/java-bill-scrapper/src/net/anthonypoon/billscrapper/gui/controller/MainController.java</file>
             <file>file://192.168.0.226/home/coding-project/java-bill-scrapper/src/net/anthonypoon/billscrapper/gui/BrowsePDF.fxml</file>
+            <file>file://192.168.0.226/home/coding-project/java-bill-scrapper/src/net/anthonypoon/billscrapper/asset/img/cancel.svg</file>
+            <file>file://192.168.0.226/home/coding-project/java-bill-scrapper/src/net/anthonypoon/billscrapper/gui/controller/Test.java</file>
             <file>file://192.168.0.226/home/coding-project/java-bill-scrapper/src/net/anthonypoon/billscrapper/gui/table/BillSummaryTableFactory.java</file>
             <file>file://192.168.0.226/home/coding-project/java-bill-scrapper/src/net/anthonypoon/billscrapper/database/DbReader.java</file>
-            <file>file://192.168.0.226/home/coding-project/java-bill-scrapper/src/net/anthonypoon/billscrapper/gui/ViewRecord.fxml</file>
-            <file>file://192.168.0.226/home/coding-project/java-bill-scrapper/src/net/anthonypoon/billscrapper/gui/controller/Controller.java</file>
+            <file>file://192.168.0.226/home/coding-project/java-bill-scrapper/src/net/anthonypoon/billscrapper/gui/controller/ViewRecordController.java</file>
+            <file>file://192.168.0.226/home/coding-project/java-bill-scrapper/src/net/anthonypoon/billscrapper/gui/controller/InsertDBController.java</file>
+            <file>file://192.168.0.226/home/coding-project/java-bill-scrapper/src/net/anthonypoon/billscrapper/gui/MainApp.java</file>
+            <file>file://192.168.0.226/home/coding-project/java-bill-scrapper/src/net/anthonypoon/billscrapper/gui/ThemeFactory.java</file>
+            <file>file://192.168.0.226/home/coding-project/java-bill-scrapper/src/net/anthonypoon/billscrapper/database/DbWriter.java</file>
+            <file>file://192.168.0.226/home/coding-project/java-bill-scrapper/src/net/anthonypoon/billscrapper/gui/Main.fxml</file>
+            <file>file://192.168.0.226/home/coding-project/java-bill-scrapper/src/net/anthonypoon/billscrapper/gui/main.css</file>
             <file>file://192.168.0.226/home/coding-project/java-bill-scrapper/src/net/anthonypoon/billscrapper/database/DatabaseConnector.java</file>
+            <file>file://192.168.0.226/home/coding-project/java-bill-scrapper/src/net/anthonypoon/billscrapper/gui/controller/Controller.java</file>
+            <file>file://192.168.0.226/home/coding-project/java-bill-scrapper/src/net/anthonypoon/billscrapper/asset/img/error.svg</file>
+            <file>file://192.168.0.226/home/coding-project/java-bill-scrapper/src/net/anthonypoon/billscrapper/gui/controller/MainController.java</file>
+            <file>file://192.168.0.226/home/coding-project/java-bill-scrapper/src/net/anthonypoon/billscrapper/gui/ViewRecord.fxml</file>
+            <file>file://192.168.0.226/home/coding-project/java-bill-scrapper/src/net/anthonypoon/billscrapper/gui/InsertDB.fxml</file>
+            <file>file://192.168.0.226/home/coding-project/java-bill-scrapper/src/net/anthonypoon/billscrapper/gui/controller/ControllerListener.java</file>
         </group>
     </open-files>
 </project-private>

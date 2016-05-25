@@ -70,4 +70,7 @@
     nbproject/build-impl.xml file. 
 
     -->
+    <target name="-post-jar">
+        <copydir src="${resource.dir}" dest="${dist.dir}/resource"/>
+    </target>
 </project>
